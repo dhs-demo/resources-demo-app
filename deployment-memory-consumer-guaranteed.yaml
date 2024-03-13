@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: memory-consumer
+  name: memory-consumer-guaranteed
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: memory-consumer-guaranteed
+  template:
+    metadata:
+      labels:
+        app: memory-consumer-guaranteed
+    spec:
+      containers:
+      - name: memory-consumer
+        image: quay.io/andymill/memory_consumer:latest
+        resources: 
+          limits:
+            cpu: "1"
+            memory: 512Mi
+          requests: 
+            cpu: "1"
+            memory: 512Mi

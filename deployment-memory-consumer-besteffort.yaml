@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: memory-consumer
+  name: memory-consumer-besteffort
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: memory-consumer-besteffort
+  template:
+    metadata:
+      labels:
+        app: memory-consumer-besteffort
+    spec:
+      containers:
+      - name: memory-consumer
+        image: quay.io/andymill/memory_consumer:latest
+        resources: {}

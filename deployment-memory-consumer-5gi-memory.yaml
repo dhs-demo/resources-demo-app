@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: memory-consumer
+  name: memory-consumer-5gig-memory
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: memory-consumer-5gig-memory
+  template:
+    metadata:
+      labels:
+        app: memory-consumer-5gig-memory
+    spec:
+      containers:
+      - name: memory-consumer
+        image: quay.io/andymill/memory_consumer:latest
+        resources: 
+          limits:
+            cpu: "1"
+            memory: 5Gi
+          requests: 
+            cpu: 200m
+            memory: 5Gi
